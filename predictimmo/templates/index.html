@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{%- block htmltitle %}Home{%- endblock%}
+
+{%- block content %}
+<section class="hero is-success is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third is-offset-one-third">
+          <p class="title">
+            Estimate the value of your property
+          </p>
+
+          <form method="post" action="{{ url_for('home.index') }}">
+            <div class="field">
+              <label for="housting-type" class="label">Housing type:</label>
+              <div class="control">
+                <div class="select">
+                  <select id="housting-type" name="housing_type">
+                    <option value="appartment"{% if housing_type == 'appartement' %} selected{% endif %}>Appartment</option>
+                    <option value="house"{% if housing_type == 'house' %} selected{% endif %}>House</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="surface" class="label">Surface:</label>
+              <div class="control">
+                <input id="surface" class="input" type="number" name="surface" min="1" max="500" value="{{ surface or '50'}}">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rooms" class="label">Rooms:</label>
+              <div class="control">
+                <input id="rooms" class="input" type="number" name="rooms" min="1" max="10" value="{{ rooms or '3' }}">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button class="button is-link" type="submit">Estimate</button>
+              </div>
+            </div>
+          </form>
+
+          {% if estimated_value %}
+          <hr>
+          <p class="is-size-5">
+            <span class="has-text-weight-bold">Estimated value: </span>
+            {{ estimated_value }}€
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{%- block htmltitle %}Home{%- endblock %} | Predictimmo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+      crossorigin="anonymous"
+    >
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="{{ url_for('home.index') }}">
+            <strong>Predict'Immo</strong>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    {%- block content %}{%- endblock %}
+  </body>
+</html>
